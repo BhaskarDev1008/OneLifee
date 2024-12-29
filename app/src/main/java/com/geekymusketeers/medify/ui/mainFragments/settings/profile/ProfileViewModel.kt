@@ -113,7 +113,7 @@ class ProfileViewModel(application: Application) : BaseViewModel(application) {
     ) = viewModelScope.launch(Dispatchers.IO) {
 
         val sharedPrefsUser = sharedPreferences.getUserFromSharedPrefs()
-        sharedPrefsUser.apply {
+        sharedPrefsUser?.apply {
             Age = age
             Name = name
             Phone = phone
@@ -130,7 +130,9 @@ class ProfileViewModel(application: Application) : BaseViewModel(application) {
             .updateChildren(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    sharedPreferences.saveUserToSharedPrefs(sharedPrefsUser)
+                    if (sharedPrefsUser != null) {
+                        sharedPreferences.saveUserToSharedPrefs(sharedPrefsUser)
+                    }
                     isProfileUpdated.postValue(true)
                 } else {
                     isProfileUpdated.postValue(false)

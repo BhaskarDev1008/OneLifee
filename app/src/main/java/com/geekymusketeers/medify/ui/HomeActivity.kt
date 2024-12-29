@@ -1,5 +1,6 @@
 package com.geekymusketeers.medify.ui
 
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,24 +23,43 @@ class HomeActivity : AppCompatActivity() {
         _binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(_binding.root)
 
-        //Hides action bar
+        // Hide the action bar
         supportActionBar?.hide()
 
         val bottomNavigationView = _binding.bottomNav
         val navController: NavController = findNavController(R.id.fragmentContainerView)
-        AppBarConfiguration(setOf(R.id.home, R.id.stats, R.id.appointment, R.id.settings))
 
+        // Configure AppBar with the navigation controller
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.home, R.id.stats, R.id.appointment, R.id.settings))
         bottomNavigationView.setupWithNavController(navController)
 
+        // Add destination changed listener
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.home -> showBottomNav(bottomNavigationView)
-                R.id.stats -> showBottomNav(bottomNavigationView)
-                R.id.appointment -> showBottomNav(bottomNavigationView)
-                R.id.settings -> showBottomNav(bottomNavigationView)
+                R.id.home, R.id.stats, R.id.appointment, R.id.settings -> showBottomNav(bottomNavigationView)
                 else -> hideBottomNav(bottomNavigationView)
             }
         }
+
+        // Handle the back press using the OnBackPressedDispatcher
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Custom back navigation logic
+                if (navController.currentBackStackEntry?.destination?.id == R.id.home && navController.previousBackStackEntry == null) {
+                    if (timer + 2000L > System.currentTimeMillis()) {
+                        finish() // Exit the app
+                    } else {
+                        Toast.makeText(
+                            applicationContext, getString(R.string.press_once_again_to_exit),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    timer = System.currentTimeMillis()
+                } else {
+                    navController.popBackStack() // Pop the back stack
+                }
+            }
+        })
     }
 
     private fun showBottomNav(bottomNavigationView: BottomNavigationView) {
@@ -48,27 +68,5 @@ class HomeActivity : AppCompatActivity() {
 
     private fun hideBottomNav(bottomNavigationView: BottomNavigationView) {
         bottomNavigationView.visibility = View.GONE
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-
-        val navController: NavController = findNavController(R.id.fragmentContainerView)
-        val count = navController.backQueue.size
-
-        if (count <= 2) {
-            if (timer + 2000L > System.currentTimeMillis()) {
-                finish()
-//                onBackPressedDispatcher.onBackPressed()
-            } else {
-                Toast.makeText(
-                    applicationContext, getString(R.string.press_once_again_to_exit),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            timer = System.currentTimeMillis()
-        } else {
-            navController.popBackStack()
-        }
     }
 }

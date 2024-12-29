@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "147458525743",
+    "project_id": "life-one-5fc7b",
+    "storage_bucket": "life-one-5fc7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147458525743:android:6b903574c06953a06c94da",
+        "android_client_info": {
+          "package_name": "com.geekymusketeers.medify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbMDwfjM3w8P6nzVC9gy9suDLgPk9vfYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

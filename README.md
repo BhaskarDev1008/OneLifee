@@ -1,19 +1,19 @@
 ![Cover](https://github.com/aritra-tech/Medify/assets/62587060/7a8cbbf3-d1c9-4e2f-8a6b-fb480a0714d5)
 
 
-# Medify 💊
-Medify is a medical android app which deals and solves issues of both patients and doctors. 
+# One Life 💊
+One Life is a medical android app which deals and solves issues of both patients and doctors. 
 
 ## Application Install
 
-***You can Install and test latest Medify app from below 👇***
+***You can Install and test latest One Life app from below 👇***
 
 [![Medify](https://img.shields.io/badge/Medify✅-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/aritra-tech/Medify/releases/tag/1.0.0)
 
 [Want to try the app](https://appetize.io/app/oqjrqtjcckwae4lsnghggdonpi?device=pixel4&osVersion=11.0&scale=50)
 
 # Our Idea 💡
-- Medify is an Android application that not only solves the issue of the patients as users, but also solves the problems of the doctors as well.
+- One Life is an Android application that not only solves the issue of the patients as users, but also solves the problems of the doctors as well.
 
 - The app offers users to book an appointment with the doctor that are registered in the app already.
 

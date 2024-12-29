@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.geekymusketeers.medify">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature
         android:name="android.hardware.telephony"
@@ -17,9 +16,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/medify_logo"
+        android:icon="@drawable/onelife_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/medify_logo"
+        android:roundIcon="@drawable/onelife_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Medify"
         tools:targetApi="31">
